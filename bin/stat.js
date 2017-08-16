@@ -6,4 +6,4 @@ client.on('error', function (err) {
 	console.log('Error ' + err);
 });
 
-client.set('last', 0, redis.print);
+client.get('last', redis.print);
