@@ -7,6 +7,7 @@
     "post": "node bin/tweet.js",
     "set": "node bin/set.js",
     "stat": "node bin/stat.js",
+	"britishize": "node bin/britishize.js",
     "test": "mocha",
     "lint": "eslint"
   },
