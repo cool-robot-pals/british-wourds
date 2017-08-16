@@ -31,6 +31,8 @@ client.get('last', function(err, reply) {
 	for(let i = reply; i < words.length; i++) {
 		if(britishWords[i]!==words[i]) {
 			const tweet = [`🇺🇸  ${words[i]}`,`🇬🇧  ${britishWords[i]}`].join('\n');
+			posted = true;
+			client.set('last', parseInt(i)+1);
 			chirpy.post('statuses/update', {status: tweet}, (error) => {
 				if(error) {
 					console.error(chalk.red('✘ Post failed'));
@@ -41,8 +43,7 @@ client.get('last', function(err, reply) {
 					console.info(chalk.green(`✔ Posted: ${tweet}`));
 				}
 			});
-			posted = true;
-			client.set('last', parseInt(i)+1);
+			break;
 		}
 	}
 	if(!posted) {
